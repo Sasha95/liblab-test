@@ -26,9 +26,9 @@ export async function CharacterList({ characters, search = '' }: Props) {
         <>
           <ul className={styles.list}>
             {characters.docs.map((character) => (
-              <li key={character._id} className={styles.item}>
-                <Link href={`/characters/${character._id}`}>{character.name}</Link>
-              </li>
+              <Link href={`/characters/${character._id}`} key={character._id}>
+                <li className={styles.item}>{character.name}</li>
+              </Link>
             ))}
           </ul>
           <Pagination

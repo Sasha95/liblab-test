@@ -29,9 +29,9 @@ export async function QuoteList({ quotePageHref, search = '', quotes, showSearch
         <>
           <ul className={styles.list}>
             {quotes.docs.map((quote) => (
-              <li key={quote._id} className={styles.item}>
-                <Link href={`/quotes/${quote._id}`}>{quote.dialog}</Link>
-              </li>
+              <Link href={`/quotes/${quote._id}`} key={quote._id}>
+                <li className={styles.item}>{quote.dialog}</li>
+              </Link>
             ))}
           </ul>
           <Pagination
