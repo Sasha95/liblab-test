@@ -4,8 +4,6 @@
 
 This project is a modern web application built with **Next.js 15 (App Router)**, **React 19**, and **TypeScript**. It follows a modular, scalable architecture inspired by feature-sliced design, leveraging React Server Components (RSC) for optimal performance and maintainability. Styling is managed with **CSS Modules** for encapsulation and theme flexibility.
 
----
-
 ## Directory Structure
 
 ```
@@ -23,16 +21,12 @@ src/
 - **entities/**: Encapsulates domain logic and UI for core entities (e.g., `character`, `quote`, `movie`). Each entity has `model/` (logic, hooks) and `ui/` (components, styles).
 - **shared/**: Houses shared UI components (`ui/`), utilities (`utils/`), and API logic (`api/`). Encourages DRY principles and consistency.
 
----
-
 ## Architectural Patterns
 
 - **Feature-Sliced Design:** Clear separation between features, entities, and shared code for scalability and maintainability.
 - **React Server Components (RSC):** Default for all components unless client interactivity is required. Minimizes client bundle size and improves performance.
 - **TypeScript-First:** All code is strictly typed. Types are preferred over interfaces, and `satisfies` is used for type validation.
 - **CSS Modules/SCSS:** Local scoping for styles, with support for SCSS features. Promotes maintainable and conflict-free styling.
-
----
 
 ## Example: Entity Structure
 
@@ -46,15 +40,11 @@ src/entities/character/
       character.module.css
 ```
 
----
-
 ## Extensibility
 
 - **Add new features:** Create a new folder in `feature/`.
 - **Add new entities:** Create a new folder in `entities/` with `model/` and `ui/` subfolders.
 - **Share logic/UI:** Place in `shared/` for reuse across the app.
-
----
 
 ## Rationale
 
