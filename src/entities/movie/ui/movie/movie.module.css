@@ -1,0 +1,20 @@
+.movie {
+  margin-bottom: 2rem;
+}
+
+.movieTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.movieInfoItem {
+  font-size: 1.2rem;
+  font-weight: 500;
+}

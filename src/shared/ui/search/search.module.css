@@ -1,0 +1,47 @@
+.root {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.btnSearch {
+  padding: 0 1rem;
+  border: none;
+  background: var(--search-bg, #fff);
+  color: var(--search-color, #222);
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input {
+  flex: 1;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #222;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.15);
+}
+
+.loader {
+  background: #222;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
