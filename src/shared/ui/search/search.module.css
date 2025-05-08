@@ -40,8 +40,11 @@
 }
 
 .loader {
-  background: #222;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #222 !important;
+  border-top: 2px solid currentColor;
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: 0.625em;
+  top: 0.625em;
 }
