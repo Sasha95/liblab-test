@@ -1,7 +1,7 @@
-import { ChangeEvent, FormEvent } from 'react';
-import styles from './search.module.css';
 import cn from 'classnames';
+import { ChangeEvent, FormEvent, Ref } from 'react';
 import { Spinner } from '../spinner/Spinner';
+import styles from './search.module.css';
 
 export type Props = {
   value: string;
@@ -12,6 +12,7 @@ export type Props = {
   disabled?: boolean;
   className?: string;
   'aria-label'?: string;
+  ref?: Ref<HTMLInputElement>;
 };
 
 export const Search = ({
@@ -23,6 +24,7 @@ export const Search = ({
   disabled = false,
   className = '',
   'aria-label': ariaLabel = 'Search',
+  ref,
 }: Props) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -30,7 +32,9 @@ export const Search = ({
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (onSubmit) onSubmit(value);
+    if (onSubmit) {
+      onSubmit(value);
+    }
   };
 
   return (
@@ -51,6 +55,7 @@ export const Search = ({
           disabled={disabled || isLoading}
           autoComplete="off"
           aria-label={ariaLabel}
+          ref={ref}
         />
         {isLoading && <Spinner size={16} className={styles.loader} isCentered={false} />}
       </div>

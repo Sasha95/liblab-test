@@ -29,14 +29,6 @@ export const Movie = ({ movie }: Props) => {
           Academy Award Nominations: {academyAwardNominations}
         </span>
         <span className={styles.movieInfoItem}>Academy Award Wins: {academyAwardWins}</span>
-        <span className={styles.movieInfoItem}>
-          Academy Award Nominations: {academyAwardNominations}
-        </span>
-        <span className={styles.movieInfoItem}>Academy Award Wins: {academyAwardWins}</span>
-        <span className={styles.movieInfoItem}>
-          Academy Award Nominations: {academyAwardNominations}
-        </span>
-        <span className={styles.movieInfoItem}>Academy Award Wins: {academyAwardWins}</span>
       </div>
     </div>
   );

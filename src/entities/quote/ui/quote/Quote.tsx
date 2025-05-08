@@ -14,11 +14,15 @@ export const Quote = async ({ quote, movieName, characterName }: Props) => {
       <div className={styles.movie}>
         <div className={styles.info}>
           <p>Movie:</p>
-          <Link href={`/movies/${quote.movie}`}>{movieName}</Link>
+          <Link href={`/movies/${quote.movie}`} className={styles.link}>
+            {movieName}
+          </Link>
         </div>
         <div className={styles.info}>
           <p>Character:</p>
-          <Link href={`/characters/${quote.character}`}>{characterName}</Link>
+          <Link href={`/characters/${quote.character}`} className={styles.link}>
+            {characterName}
+          </Link>
         </div>
       </div>
       <div className={styles.dialog}>{quote.dialog}</div>

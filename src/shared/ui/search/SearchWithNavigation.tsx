@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useRef } from 'react';
 
 import { useRouter } from 'next/navigation';
 import { Search } from './Search';
@@ -20,6 +20,7 @@ export function SearchWithNavigation({
   const router = useRouter();
   const [value, setValue] = useState(search);
   const [isPending, startTransition] = useTransition();
+  const ref = useRef<HTMLInputElement>(null);
 
   const handleChange = (val: string) => setValue(val);
   const handleSubmit = (val: string) => {
@@ -30,10 +31,14 @@ export function SearchWithNavigation({
         router.push(`${pageHref}`);
       }
     });
+    setTimeout(() => {
+      ref.current?.focus();
+    }, 100);
   };
 
   return (
     <Search
+      ref={ref}
       value={value}
       onChange={handleChange}
       onSubmit={handleSubmit}
