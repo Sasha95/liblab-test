@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'liblab test app',
+  title: 'The Lord of the Rings',
   description: 'liblab test app for frontend interview',
 };
 
