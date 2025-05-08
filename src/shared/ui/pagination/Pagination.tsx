@@ -52,13 +52,15 @@ export function Pagination({
     );
   };
 
+  const disabled = currentPage === 1 || currentPage === totalPages;
+
   return (
     <nav className={styles.pagination} aria-label="Pagination">
       <Link
         href={getPageHref(currentPage - 1)}
-        className={styles.navBtn}
-        aria-disabled={currentPage === 1}
-        tabIndex={currentPage === 1 ? -1 : 0}
+        className={cn(styles.navBtn, { [styles.disabled]: disabled })}
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
       >
         Prev
       </Link>
@@ -66,9 +68,9 @@ export function Pagination({
       {pages.map(renderPage)}
       <Link
         href={getPageHref(currentPage + 1)}
-        className={styles.navBtn}
-        aria-disabled={currentPage === totalPages}
-        tabIndex={currentPage === totalPages ? -1 : 0}
+        className={cn(styles.navBtn, { [styles.disabled]: disabled })}
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
       >
         Next
       </Link>

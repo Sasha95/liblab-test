@@ -59,3 +59,7 @@
   padding: 0 0.5rem;
   user-select: none;
 }
+
+.disabled {
+  pointer-events: none;
+}
