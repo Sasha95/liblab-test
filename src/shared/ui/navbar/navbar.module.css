@@ -47,7 +47,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1201;
 }
 
 .hamburgerBar {
@@ -69,50 +68,22 @@
   }
 }
 
+.header {
+  background: #232526 !important;
+}
+
 /* Drawer styles */
 .drawer {
   position: fixed;
-  top: 0;
+  top: 40px;
   left: 0;
   height: 100vh;
-  width: 80vw;
-  max-width: 320px;
+  width: 100%;
   background: #232526;
   box-shadow: 2px 0 16px rgba(0, 0, 0, 0.18);
-  z-index: 1202;
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem 1.5rem 1.5rem;
-  animation: slideInDrawer 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes slideInDrawer {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 1200;
-}
-
-.closeButton {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  color: #f5f5f5;
-  font-size: 2rem;
-  cursor: pointer;
-  margin-bottom: 1.5rem;
 }
 
 .drawerNav {

@@ -1,20 +1,15 @@
-import React from 'react';
 import Link from 'next/link';
 import styles from './pagination.module.css';
 import cn from 'classnames';
-type PaginationProps = {
+
+type Props = {
   currentPage: number;
   totalPages: number;
   getPageHref: (page: number) => string;
   siblingCount?: number;
 };
 
-export function Pagination({
-  currentPage,
-  totalPages,
-  getPageHref,
-  siblingCount = 1,
-}: PaginationProps) {
+export function Pagination({ currentPage, totalPages, getPageHref, siblingCount = 1 }: Props) {
   if (totalPages <= 1) return null;
 
   const createPageArray = () => {

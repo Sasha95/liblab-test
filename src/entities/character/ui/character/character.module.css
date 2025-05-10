@@ -1,9 +1,10 @@
-.character {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.card {
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
 }
 
-.link {
-  color: #8ecae6;
+.card:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  border-color: #a5d8ff;
 }

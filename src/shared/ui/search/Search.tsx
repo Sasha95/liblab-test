@@ -1,30 +1,22 @@
-import cn from 'classnames';
-import { ChangeEvent, FormEvent, Ref } from 'react';
-import { Spinner } from '../spinner/Spinner';
-import styles from './search.module.css';
+import { ChangeEvent, FormEvent } from 'react';
+import { Button, Group, Input } from '@mantine/core';
 
 export type Props = {
   value: string;
   onChange: (value: string) => void;
   onSubmit?: (value: string) => void;
-  placeholder?: string;
-  isLoading?: boolean;
   disabled?: boolean;
-  className?: string;
   'aria-label'?: string;
-  ref?: Ref<HTMLInputElement>;
+  placeholder?: string;
 };
 
 export const Search = ({
   value,
   onChange,
   onSubmit,
-  placeholder = 'Search...',
-  isLoading = false,
   disabled = false,
-  className = '',
   'aria-label': ariaLabel = 'Search',
-  ref,
+  placeholder = 'Search...',
 }: Props) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -38,30 +30,22 @@ export const Search = ({
   };
 
   return (
-    <form
-      className={cn(styles.root, className)}
-      onSubmit={handleFormSubmit}
-      role="search"
-      aria-label={ariaLabel}
-    >
-      <div className={styles.inputWrapper}>
-        <input
-          id="search-input"
+    <form onSubmit={handleFormSubmit} role="search" aria-label={ariaLabel}>
+      <Group gap="xs" mb={'md'}>
+        <Input
           type="search"
-          className={styles.input}
           value={value}
           onChange={handleInputChange}
           placeholder={placeholder}
-          disabled={disabled || isLoading}
-          autoComplete="off"
+          disabled={disabled}
           aria-label={ariaLabel}
-          ref={ref}
+          flex={1}
+          size="md"
         />
-        {isLoading && <Spinner size={16} className={styles.loader} isCentered={false} />}
-      </div>
-      <button type="submit" className={styles.btnSearch}>
-        Search
-      </button>
+        <Button size="md" type="submit">
+          Search
+        </Button>
+      </Group>
     </form>
   );
 };

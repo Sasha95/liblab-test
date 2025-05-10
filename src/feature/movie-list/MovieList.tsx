@@ -1,14 +1,14 @@
 import Link from 'next/link';
-import { getMovies } from '../../entities/movie/model/use-movies';
 import styles from './movieList.module.css';
 import { Pagination } from '@/shared/ui/pagination/Pagination';
 import { formatNumber } from '@/shared/utils/formatNumber';
+import { MovieType, PaginationResponse } from '@/shared/api/types';
 
-export type Props = { page?: number; limit?: number };
+export type Props = {
+  movies: PaginationResponse<MovieType>;
+};
 
-export async function MovieList({ page = 1, limit = 10 }: Props) {
-  const movies = await getMovies({ page, limit });
-
+export const MovieList = ({ movies }: Props) => {
   if (!movies.docs.length) return <div className={styles.empty}>No movies found.</div>;
 
   return (
@@ -42,4 +42,4 @@ export async function MovieList({ page = 1, limit = 10 }: Props) {
       />
     </div>
   );
-}
+};

@@ -3,8 +3,8 @@ import { Movie } from '@/entities/movie/ui/movie/Movie';
 import { QuoteList } from '@/feature/quote-list/QuoteList';
 import styles from './page.module.css';
 import { Suspense } from 'react';
-import { Spinner } from '@/shared/ui/spinner/Spinner';
 import { notFound } from 'next/navigation';
+import { Spinner } from '@/shared/ui/spinner/Spinner';
 
 type Props = {
   params: Promise<{ moveId: string }>;
@@ -23,7 +23,7 @@ const MoviePage = async ({ params, searchParams }: Props) => {
   const movieData = movie.docs[0];
   const quotes = await getMovieQuotes(moveId, {
     page: page ? parseInt(page) : 1,
-    limit: limit ? parseInt(limit) : 10,
+    limit: limit ? parseInt(limit) : 25,
     dialog: search ? `/${search}/i` : undefined,
   });
 

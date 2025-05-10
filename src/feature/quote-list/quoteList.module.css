@@ -1,19 +1,24 @@
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 1rem;
+.quoteLink {
+  text-decoration: none;
+  display: block;
+  border-radius: 0.5rem;
+  transition:
+    box-shadow 0.2s,
+    background 0.2s;
 }
 
-.item {
-  background: #181a1b;
-  color: #f5f5f5;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.quoteLink:hover,
+.quoteLink:focus-visible {
+  background: #f5f6fa;
+  box-shadow: 0 2px 8px rgba(60, 60, 60, 0.08);
 }
 
-.empty {
-  color: #888;
+.quoteCard {
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.quoteLink:hover .quoteCard,
+.quoteLink:focus-visible .quoteCard {
+  background: #f5f6fa;
 }

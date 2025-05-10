@@ -1,26 +1,31 @@
 'use client';
 
-import { useState, useTransition, useRef } from 'react';
+import { useState, useTransition, ReactNode } from 'react';
 
 import { useRouter } from 'next/navigation';
 import { Search } from './Search';
+import { Spinner } from '../spinner/Spinner';
 
-export function SearchWithNavigation({
-  search,
-  pageHref,
-  placeholder = 'Search...',
-  ariaLabel = 'Search',
-}: {
+type Props = {
   search: string;
   pageHref: string;
-  paramName?: string;
-  placeholder?: string;
   ariaLabel?: string;
-}) {
+  children: ReactNode;
+  placeholder?: string;
+  showSearch?: boolean;
+};
+
+export const SearchWithNavigation = ({
+  search,
+  pageHref,
+  ariaLabel = 'Search',
+  children,
+  placeholder,
+  showSearch,
+}: Props) => {
   const router = useRouter();
   const [value, setValue] = useState(search);
   const [isPending, startTransition] = useTransition();
-  const ref = useRef<HTMLInputElement>(null);
 
   const handleChange = (val: string) => setValue(val);
   const handleSubmit = (val: string) => {
@@ -31,20 +36,20 @@ export function SearchWithNavigation({
         router.push(`${pageHref}`);
       }
     });
-    setTimeout(() => {
-      ref.current?.focus();
-    }, 100);
   };
 
   return (
-    <Search
-      ref={ref}
-      value={value}
-      onChange={handleChange}
-      onSubmit={handleSubmit}
-      placeholder={placeholder}
-      aria-label={ariaLabel}
-      isLoading={isPending}
-    />
+    <>
+      {showSearch && (
+        <Search
+          value={value}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          aria-label={ariaLabel}
+          placeholder={placeholder}
+        />
+      )}
+      {isPending ? <Spinner /> : children}
+    </>
   );
-}
+};

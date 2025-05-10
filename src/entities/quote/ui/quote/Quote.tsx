@@ -1,6 +1,8 @@
 import { QuoteType } from '@/shared/api/types';
+import { Card, Text, Title } from '@mantine/core';
+import { CustomLink } from '@/shared/ui/custom-link/CustomLink';
+import { BackButton } from '@/shared/ui/back-button/BackButton';
 import styles from './quote.module.css';
-import Link from 'next/link';
 
 type Props = {
   quote: QuoteType;
@@ -10,22 +12,23 @@ type Props = {
 
 export const Quote = async ({ quote, movieName, characterName }: Props) => {
   return (
-    <div className={styles.quote}>
-      <div className={styles.movie}>
-        <div className={styles.info}>
-          <p>Movie:</p>
-          <Link href={`/movies/${quote.movie}`} className={styles.link}>
-            {movieName}
-          </Link>
+    <>
+      <BackButton />
+      <Card shadow="lg" padding="xl" radius="xl" withBorder className={styles.card}>
+        <div className={styles.quoteMark} aria-hidden="true">
+          “
         </div>
-        <div className={styles.info}>
-          <p>Character:</p>
-          <Link href={`/characters/${quote.character}`} className={styles.link}>
-            {characterName}
-          </Link>
-        </div>
-      </div>
-      <div className={styles.dialog}>{quote.dialog}</div>
-    </div>
+        <Title order={2} mb="sm" className={styles.title}>
+          {quote.dialog}
+        </Title>
+        <Text className={styles.meta}>
+          <b>Movie:</b> <CustomLink href={`/movies/${quote.movie}`}>{movieName}</CustomLink>
+        </Text>
+        <Text className={styles.meta}>
+          <b>Character:</b>{' '}
+          <CustomLink href={`/characters/${quote.character}`}>{characterName}</CustomLink>
+        </Text>
+      </Card>
+    </>
   );
 };

@@ -1,25 +1,5 @@
-import styles from './spinner.module.css';
-import cn from 'classnames';
+import { Loader } from '@mantine/core';
 
-export type Props = {
-  size?: number;
-  ariaLabel?: string;
-  className?: string;
-  isCentered?: boolean;
-};
-
-export const Spinner = ({
-  size = 48,
-  ariaLabel = 'Loading...',
-  className,
-  isCentered = true,
-}: Props) => {
-  return (
-    <div
-      className={cn(styles.spinner, { [styles.centered]: isCentered }, className)}
-      style={{ width: size, height: size }}
-      role="status"
-      aria-label={ariaLabel}
-    />
-  );
+export const Spinner = () => {
+  return <Loader pos={'absolute'} top={'50%'} left={'50%'} color="blue" />;
 };

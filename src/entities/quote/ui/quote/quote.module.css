@@ -1,24 +1,82 @@
-.quote {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.card {
+  position: relative;
+  background: linear-gradient(135deg, #f9f6f1 70%, #e8d9b9 100%);
+  box-shadow: 0 6px 32px 0 rgba(60, 40, 10, 0.13);
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  border-radius: 1.5rem;
+  border: 2px solid #bfa76f;
+  overflow: hidden;
+  min-width: 320px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.movie {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  border: 4px double #bfa76f;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-.info {
-  display: flex;
-  gap: 0.5rem;
+.quoteMark {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.5rem;
+  font-size: 4.5rem;
+  color: #bfa76f;
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 2px 8px #e8d9b9;
 }
 
-.dialog {
-  font-size: 1.2rem;
+.title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #3b2f13;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-shadow: 0 1px 0 #e8d9b9;
 }
 
-.link {
-  color: #8ecae6;
+.meta {
+  font-size: 1.1rem;
+  color: #6d5c2c;
+  margin-top: 0.7rem;
+  text-align: center;
+}
+
+.meta b {
+  color: #bfa76f;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.meta a {
+  color: #7c5e10;
+  text-decoration: underline dotted #bfa76f 2px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.meta a:hover {
+  color: #bfa76f;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 2rem 1rem 1.5rem 1rem;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .quoteMark {
+    font-size: 2.5rem;
+    left: 0.7rem;
+  }
 }

@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './navbar.module.css';
 import logo from '@/assets/logo.webp';
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef } from 'react';
+import { Button, CloseButton, Drawer } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 
 const navLinks = [
   { href: '/movies', label: 'Movies' },
@@ -12,22 +14,11 @@ const navLinks = [
   { href: '/quotes', label: 'Quotes' },
 ];
 
-export function Navbar() {
+export const Navbar = () => {
   const pathname = usePathname();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false);
+
   const drawerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!isDrawerOpen) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsDrawerOpen(false);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isDrawerOpen]);
-
-  const handleDrawerOpen = useCallback(() => setIsDrawerOpen(true), []);
-  const handleDrawerClose = useCallback(() => setIsDrawerOpen(false), []);
 
   return (
     <nav className={styles.navbar} aria-label="Main navigation">
@@ -38,8 +29,8 @@ export function Navbar() {
         className={styles.hamburger}
         aria-label="Open navigation menu"
         aria-controls="mobile-drawer"
-        aria-expanded={isDrawerOpen}
-        onClick={handleDrawerOpen}
+        aria-expanded={opened}
+        onClick={open}
         type="button"
       >
         <span className={styles.hamburgerBar} />
@@ -58,50 +49,41 @@ export function Navbar() {
           </Link>
         ))}
       </div>
-      {isDrawerOpen && (
-        <>
-          <div
-            className={styles.overlay}
-            tabIndex={-1}
-            aria-hidden="true"
-            onClick={handleDrawerClose}
-          />
-          <aside
-            id="mobile-drawer"
-            className={styles.drawer}
-            ref={drawerRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile navigation menu"
-          >
-            <button
-              className={styles.closeButton}
-              aria-label="Close navigation menu"
-              onClick={handleDrawerClose}
-              type="button"
-            >
-              ×
-            </button>
-            <nav className={styles.drawerNav} aria-label="Mobile navigation">
-              {navLinks.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className={
-                    pathname.startsWith(href)
-                      ? `${styles.drawerLink} ${styles.active}`
-                      : styles.drawerLink
-                  }
-                  aria-current={pathname.startsWith(href) ? 'page' : undefined}
-                  onClick={handleDrawerClose}
-                >
-                  {label}
-                </Link>
-              ))}
-            </nav>
-          </aside>
-        </>
-      )}
+      <Drawer
+        classNames={{
+          header: styles.header,
+        }}
+        opened={opened}
+        onClose={close}
+        closeButtonProps={{ className: styles.closeButton }}
+      >
+        <aside
+          id="mobile-drawer"
+          className={styles.drawer}
+          ref={drawerRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
+        >
+          <nav className={styles.drawerNav} aria-label="Mobile navigation">
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={
+                  pathname.startsWith(href)
+                    ? `${styles.drawerLink} ${styles.active}`
+                    : styles.drawerLink
+                }
+                aria-current={pathname.startsWith(href) ? 'page' : undefined}
+                onClick={close}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </aside>
+      </Drawer>
     </nav>
   );
-}
+};

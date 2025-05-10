@@ -8,7 +8,7 @@ export const getQuotes = async (params?: PaginationParams & { dialog?: string })
     endpoint: '/quote',
     params: {
       page: params?.page?.toString() || '1',
-      limit: params?.limit?.toString() || '10',
+      limit: params?.limit?.toString() || '25',
       dialog: params?.dialog || '',
     },
   });

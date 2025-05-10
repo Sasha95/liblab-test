@@ -1,14 +1,57 @@
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 1rem;
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
 }
-.item {
-  background: #181a1b;
-  color: #f5f5f5;
-  border-radius: 8px;
+
+.card {
+  background: linear-gradient(135deg, #f5ecd6 0%, #e0c68b 100%);
+  border: 2px solid #bfa14a;
+  border-radius: 1.2rem;
+  box-shadow:
+    0 4px 24px #bfa14a22,
+    0 1.5px 6px #3e2c0a11;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+  color: #3e2c0a;
+  transition:
+    transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 8px 32px #bfa14a33,
+    0 2px 8px #3e2c0a22;
+  outline: 2px solid #bfa14a;
+  outline-offset: 2px;
+}
+
+.characterName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #6b4f1d;
+  letter-spacing: 0.03em;
+  text-shadow:
+    0 1px 0 #fffbe6,
+    0 2px 4px #bfa14a44;
+}
+
+.empty {
+  color: #6b4f1d;
+  background: linear-gradient(120deg, #f5ecd6 0%, #e0c68b 100%);
+  border-radius: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 2rem 0;
+  box-shadow: 0 2px 12px #bfa14a33;
+  border: 2px solid #bfa14a;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  width: 100%;
 }
