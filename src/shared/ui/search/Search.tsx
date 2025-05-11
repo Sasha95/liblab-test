@@ -30,7 +30,12 @@ export const Search = ({
   };
 
   return (
-    <form onSubmit={handleFormSubmit} role="search" aria-label={ariaLabel}>
+    <form
+      onSubmit={handleFormSubmit}
+      role="search"
+      aria-label={ariaLabel}
+      data-testid="search-form"
+    >
       <Group gap="xs" mb={'md'}>
         <Input
           type="search"
@@ -41,8 +46,9 @@ export const Search = ({
           aria-label={ariaLabel}
           flex={1}
           size="md"
+          data-testid="search-input"
         />
-        <Button size="md" type="submit">
+        <Button size="md" type="submit" data-testid="search-button">
           Search
         </Button>
       </Group>

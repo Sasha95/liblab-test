@@ -1,9 +1,9 @@
-import { Pagination } from '@/shared/ui/pagination/Pagination';
 import Link from 'next/link';
 import { SearchWithNavigation } from '@/shared/ui/search/SearchWithNavigation';
 import { PaginationResponse, QuoteType } from '@/shared/api/types';
 import { Card, Group, Text } from '@mantine/core';
 import styles from './quoteList.module.css';
+import { Pagination } from '@/shared/ui/pagination/Pagination';
 
 export type Props = {
   quotePageHref: string;
@@ -14,7 +14,7 @@ export type Props = {
 
 const EmptyQuoteList = () => {
   return (
-    <Text mb={'lg'} c="dimmed">
+    <Text mb={'lg'} c="dimmed" data-testid="empty-quote-list">
       No quotes found.
     </Text>
   );
@@ -49,6 +49,7 @@ export const QuoteList = ({ quotePageHref, search = '', quotes, showSearch = fal
             getPageHref={(page) =>
               `${quotePageHref}?page=${page}${search ? `&search=${encodeURIComponent(search)}` : ''}`
             }
+            data-testid="pagination"
           />
         </>
       ) : (

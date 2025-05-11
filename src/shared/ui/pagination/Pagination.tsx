@@ -50,7 +50,7 @@ export function Pagination({ currentPage, totalPages, getPageHref, siblingCount 
   const disabled = currentPage === 1 || currentPage === totalPages;
 
   return (
-    <nav className={styles.pagination} aria-label="Pagination">
+    <nav className={styles.pagination} data-testid="pagination" aria-label="Pagination">
       <Link
         href={getPageHref(currentPage - 1)}
         className={cn(styles.navBtn, { [styles.disabled]: disabled })}

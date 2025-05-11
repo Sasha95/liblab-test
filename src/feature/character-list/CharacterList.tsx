@@ -10,7 +10,11 @@ export type Props = {
 };
 
 const EmptyCharacterList = () => {
-  return <div className={styles.empty}>No characters found.</div>;
+  return (
+    <div data-testid="empty-character-list" className={styles.empty}>
+      No characters found.
+    </div>
+  );
 };
 
 export async function CharacterList({ characters, search = '' }: Props) {

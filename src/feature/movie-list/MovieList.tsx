@@ -9,7 +9,12 @@ export type Props = {
 };
 
 export const MovieList = ({ movies }: Props) => {
-  if (!movies.docs.length) return <div className={styles.empty}>No movies found.</div>;
+  if (!movies.docs.length)
+    return (
+      <div className={styles.empty} data-testid="empty-movie-list">
+        No movies found.
+      </div>
+    );
 
   return (
     <div>
@@ -39,6 +44,7 @@ export const MovieList = ({ movies }: Props) => {
         currentPage={movies.page}
         totalPages={movies.pages}
         getPageHref={(page) => `?page=${page}`}
+        data-testid="pagination"
       />
     </div>
   );

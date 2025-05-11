@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './navbar.module.css';
 import logo from '@/assets/logo.webp';
-import { useState, useCallback, useRef } from 'react';
-import { Button, CloseButton, Drawer } from '@mantine/core';
+import { useRef } from 'react';
+import { Drawer } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 const navLinks = [
